@@ -69,13 +69,13 @@ def ask_question(url, question):
     return result
 
 def question_ans(url, query):
-    embeddings = OpenAIEmbeddings(openai_api_key='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')
+    embeddings = OpenAIEmbeddings(openai_api_key='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')
     db=None
     if os.path.isdir("faiss_index"):
         db = FAISS.load_local("faiss_index", embeddings)
     else:
         loader = YoutubeLoader.from_youtube_url(
-        "https://www.youtube.com/watch?v=Aih05VGzE-o", add_video_info=True
+        url, add_video_info=True
         )
 
         docs = loader.load()
@@ -92,9 +92,8 @@ def question_ans(url, query):
         db = FAISS.from_documents(documents, embeddings)
         db.save_local("faiss_index")
         
-    print("started")
     docs = db.similarity_search(query)
-    llm = ChatOpenAI(openai_api_key='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')
+    llm = ChatOpenAI(openai_api_key='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')
     chain = load_qa_chain(llm, chain_type="stuff")
     answer = chain.run(input_documents=docs, question=query)
     print(answer)
@@ -212,7 +211,7 @@ def on_message(message_history: List[Message], state: dict = None):
         }
     
 
-    elif '/ask_question. ' in command:
+    elif '/ask_question. ' in command and link_added == True:
         question = command.split(". ")[1]
         ans = question_ans(youtube_url, question)
         print(ans)
