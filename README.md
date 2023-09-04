@@ -6,14 +6,22 @@
     </a>
 </p>
 
-<h3 align="center">
+<h1 align="center">
     <p>✨ Youtube Chatbot with Textbase, Assembly AI and Open AI ✨</p>
-</h3>
+</h1>
+
+#### Features
++ Generate Summaries
++ Generate Chapters - Timestamp based real YouTube links
++ Generate Subtitles - Actual `.srt` file to use with the video
++ Ask Questions - Get refined answers with `Langchain` x `Assembly AI` x `Open AI` features.
 
 
-Add Open AI `API_KEY` and Assembly AI `API_KEY` in `main.py` and repo will take care of the rest :)
 
-Use accurate YouTube video links, Make sure while posting that `&t=` query params is not present in the link pasted
+#### Note
+1. Add Open AI `API_KEY` and Assembly AI `API_KEY` in `main.py` and repo will take care of the rest :)
+
+2. Use accurate YouTube video links, Make sure while posting that `&t=` query params is not present in the link pasted
 
 
 ## Installation
